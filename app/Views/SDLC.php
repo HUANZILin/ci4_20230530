@@ -19,9 +19,9 @@
         <?php foreach ($todo_list as $todo => $todo_num) : ?>
             <tr>
                 <td><?= esc($todo) ?></td>
-                <?php foreach ($todo_num as $todo_item) : ?>
+                <? foreach ($todo_num as $todo_item) : ?>
                     <td><?= esc($todo_item) ?></td>
-                <?php endforeach ?>
+                <? endforeach ?>
             </tr>
         <?php endforeach ?>
     </table>
