@@ -31,6 +31,20 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->get('timer', 'Home::timer');
+
+// Get all todo. (Read)
+$routes->get('todo', 'TodoListController::index');
+$routes->get('todoList', 'TodoListController::view');
+// Get single todo. (Read)
+$routes->get('todo/(:num)', 'TodoListController::show/$1');
+// Add a new todo. (Create)
+$routes->post('todo', 'TodoListController::create');
+// Update a todo data. (Update)
+$routes->put('todo/(:num)', 'TodoListController::update/$1');
+// Delete a todo. (Delete)
+$routes->delete('todo/(:num)', 'TodoListController::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -9,6 +9,11 @@ class Home extends BaseController
         return view('welcome_message');
     }
 
+    public function timer()
+    {
+        return view('timer');
+    }
+
     public function tableLab()
     {
         $data = [
