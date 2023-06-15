@@ -99,9 +99,11 @@
     </div>
 
     <script>
+        let haveCanceled = false;
         let tForm = document.getElementById("timeForm");
         tForm.addEventListener("submit", (e) => {
             e.preventDefault();
+            haveCanceled = false;
             let formData = new FormData(tForm);
             let time = Object.fromEntries(formData);
             let hour, minute, second;
@@ -180,16 +182,19 @@
             clearInterval(countdownTime);
             sButton.style.display = "none";
             rButton.style.display = "inline-block";
+            if (haveCanceled) return;
         });
         rButton.addEventListener("click", () => {
             sButton.style.display = "inline-block";
             rButton.style.display = "none";
+            if (haveCanceled) return;
             countdownTime = setInterval(getRemainingTime, 1000);
         });
 
         let cButton = document.getElementById("cancel");
         cButton.addEventListener("click", () => {
             clearInterval(countdownTime);
+            haveCanceled = true;
             document.getElementById("hour").innerHTML = "00:";
             document.getElementById("minute").innerHTML = "00:";
             document.getElementById("second").innerHTML = "00";
